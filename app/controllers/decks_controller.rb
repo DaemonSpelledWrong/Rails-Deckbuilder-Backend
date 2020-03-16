@@ -7,6 +7,12 @@ class DecksController < ApplicationController
     render json: @decks, include: :standard_cards
   end
 
+  def show
+    @deck = Deck.find(params[:id])
+
+    render json: @deck, include: :standard_cards
+  end
+
   def create
     @deck = Deck.create(
       name: params[:name],
